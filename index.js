@@ -10,11 +10,6 @@ import packageData from 'react-native/package.json';
 import semver from 'semver';
 const ViewPlugins = NativeModules.InputScrollViewPlugin;
 
-const propTypes = {
-    distance : PropTypes.number,
-    tapToDismiss : PropTypes.bool,
-    onKeyboardWillShow : PropTypes.func,
-}
 
 const defaultProps = {
     distance : 160,
@@ -63,7 +58,7 @@ export default class InputScrollView extends Component {
               <ScrollView
                 style = {{flex:1}}
                 contentContainerStyle = {[{alignItems : 'stretch',}]}
-                keyboardShouldPersistTaps = {tapToDismiss?true:keyboardShouldPersistTaps}
+                    keyboardShouldPersistTaps={tapToDismiss ? "always" : keyboardShouldPersistTaps}
                 ref={(srcollView) => {
                        this.scrollViewRef = srcollView;
                 }}
@@ -137,5 +132,4 @@ export default class InputScrollView extends Component {
     }
 }
 
-InputScrollView.propTypes = propTypes;
 InputScrollView.defaultProps = defaultProps;
